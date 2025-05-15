@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1747296083 source:/home/rest/Desktop/Agenda/src/core/Agenda.cpp
+
+1747296047 source:/home/rest/Desktop/Agenda/src/core/Note.cpp
+
+1747296072 source:/home/rest/Desktop/Agenda/src/core/Page.cpp
+
+1747296058 source:/home/rest/Desktop/Agenda/src/core/Repetition.cpp
+
+1747296092 source:/home/rest/Desktop/Agenda/src/core/StorageManager.cpp
+
+1747316303 source:/home/rest/Desktop/Agenda/src/main.cpp
+	<iostream>
+	"include/Date.hpp"
+
+1747316303 /home/rest/Desktop/Agenda/src/include/Date.hpp
+	<string>
+
+1747316213 source:/home/rest/Desktop/Agenda/src/core/Date.cpp
+	"../include/Date.hpp"
+	<string>
+	<ctime>
+
