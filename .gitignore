@@ -1,0 +1,9 @@
+# Excludes Code::Block files
+*.cbp
+*.layout
+
+# Other common junk files
+*.exe
+*.o
+
+
