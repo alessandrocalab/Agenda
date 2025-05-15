@@ -1,9 +1,12 @@
 # Excludes Code::Block files
 *.cbp
 *.layout
+*.save
 
 # Other common junk files
 *.exe
 *.o
 
-
+# Ignore all files inside data/
+data/*
+!data/.gitkeep

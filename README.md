@@ -33,5 +33,5 @@ All existing code will be rewritten with clearer structure, better naming, and f
 
 ## 👤 Author
 
-**Alessandro Calabrese**  
+**Alessandro Junior Calabrese**  
 Computer Science student — Parthenope University, Naples  

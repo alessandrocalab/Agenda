@@ -1,0 +1,3 @@
+/home/rest/Desktop/Agenda/build/CMakeFiles/agenda.dir
+/home/rest/Desktop/Agenda/build/CMakeFiles/edit_cache.dir
+/home/rest/Desktop/Agenda/build/CMakeFiles/rebuild_cache.dir

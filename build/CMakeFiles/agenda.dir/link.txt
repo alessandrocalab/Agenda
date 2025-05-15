@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/agenda.dir/src/core/Agenda.cpp.o CMakeFiles/agenda.dir/src/core/Date.cpp.o CMakeFiles/agenda.dir/src/core/Note.cpp.o CMakeFiles/agenda.dir/src/core/Page.cpp.o CMakeFiles/agenda.dir/src/core/Repetition.cpp.o CMakeFiles/agenda.dir/src/core/StorageManager.cpp.o CMakeFiles/agenda.dir/src/main.cpp.o -o agenda 
