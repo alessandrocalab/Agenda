@@ -10,7 +10,7 @@ private:
     std::string date;
     std::vector<std::string> notes;
 public:
-    Note(const std::string &date):date(date){}
+    Note(){}
 
     //setter methods
     Note &setNotes(const std::vector<std::string> &notes){
