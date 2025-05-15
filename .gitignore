@@ -2,6 +2,9 @@
 *.cbp
 *.layout
 *.save
+*.depend
+bin/
+obj/
 
 # Other common junk files
 *.exe
