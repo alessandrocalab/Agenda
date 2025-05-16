@@ -34,8 +34,6 @@ void Page::calculateRepetitions(){
         while(date.getDayName()!=temp.calculateDate(days).getDayName()||temp.getMonth()==monthForComparsion) //makes the calculation accurate
             ++days;
 
-        std::cout<<temp.calculateDate(days).getFormattedDate()<<std::endl;
-
         repetitions.push_back(days);
     }
 
@@ -43,6 +41,7 @@ void Page::calculateRepetitions(){
 }
 
 //getter methods
+const std::vector<Note> &Page::getNotesConst()const{return notes;}
 std::vector<Note> &Page::getNotes(){return notes;}
 unsigned short Page::getId()const{return id;}
 const std::vector<short> &Page::getRepetitions(){

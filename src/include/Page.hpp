@@ -25,6 +25,7 @@ public:
     static constexpr short repNumber=5;  //1 day rep, 1 week rep, 1/2/3 Months rep
 
     //getter methods
+    const std::vector<Note> &getNotesConst()const;
     std::vector<Note> &getNotes();
     unsigned short getId()const;
     const std::vector<short> &getRepetitions();
