@@ -2,6 +2,11 @@
 #include <string>
 #include <ctime>
 
+
+bool isLeap(short year){//function to check if it is a leap year
+    return ((year%4==0&&year%100!=0)||year%400==0);
+}
+
 Date::Date(){} //default constructor
 
 //static attributes initialization

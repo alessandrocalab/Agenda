@@ -28,9 +28,15 @@ public:
         this->notes.push_back(note);
         return *this;
     }
-    //remove note
-    bool remNote(unsigned short index){
-        if(index>=notes.size()){
+    //remove note if index==-1 remove all notes
+    bool remNote(short index){
+        if(index==-1){
+            while(notes.size()>0)
+                notes.pop_back();
+            return true;
+        }
+
+        if(index>(short)notes.size()||index<-1){
             std::cerr<<"Notes' index out of range"<<std::endl;
             return false;
         }
@@ -49,7 +55,7 @@ public:
     }
     //operator to get notes
     std::string operator[](unsigned short index)const{
-        if(index>=notes.size()){
+        if(index>=notes.size()||index<0){
             std::cerr<<"Notes' index out of range"<<std::endl;
             return "";
         }

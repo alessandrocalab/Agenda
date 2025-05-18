@@ -7,19 +7,9 @@
 #include "../include/Page.hpp"
 
 class StorageManager{
-public:
-    StorageManager();
+private:
 
-    static const std::string mainPath; //constant to define the path
-    static constexpr short numberOfNotes=Page::repNumber+1; //constant to define the number of notes for each page
-
-    bool savePage(const Page &page)const; //Method to save a page
-
-    bool loadPage(Page &pages)const; //Method to load a page
-
-    std::filesystem::path pagePathCalculator(const Page &page)const;//Method to calculate a page path
-
-    template <typename FT>
+template <typename FT>
     bool fileOpener(FT &file, std::filesystem::path path)const{//Method to check file opening
         file.open(path);
         if(!file.is_open()){
@@ -33,6 +23,18 @@ public:
 
         return true;
     }
+
+    std::filesystem::path pagePathCalculator(const Page &page)const;//Method to calculate a page path
+
+public:
+    StorageManager();
+
+    static const std::string PAGES_PATH; //constant to define the path
+    static constexpr short numberOfNotes=Page::repNumber+1; //constant to define the number of notes for each page
+
+    bool savePage(const Page &page)const; //Method to save a page
+
+    bool loadPage(Page &pages)const; //Method to load a page
 
 };
 

@@ -10,10 +10,10 @@ class Page{
 private:
     Date date;
     std::vector<Note> notes;
-    const unsigned short id;
+    unsigned short id;
     std::vector<short> repetitions;
     bool repIsCalculated;
-    bool dateIsCalculated;
+    bool isModified;
 
     //method to calculate the future dates of repetitions
     void calculateRepetitions();
@@ -24,11 +24,19 @@ public:
     //constant
     static constexpr short repNumber=5;  //1 day rep, 1 week rep, 1/2/3 Months rep
 
+    //setter method
+    void setIsModified(bool newState);
+
     //getter methods
     const std::vector<Note> &getNotesConst()const;
     std::vector<Note> &getNotes();
+    Note &getNote(short index=0);
     unsigned short getId()const;
     const std::vector<short> &getRepetitions();
+    const Date &getDate()const;
+    bool getIsModified()const;
+    Page &operator=(const Page &other);
+
 };
 
 #endif // PAGE_HPP

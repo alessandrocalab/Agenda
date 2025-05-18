@@ -7,17 +7,19 @@
 //default Page's constructor
 Page::Page(short id):id(id){
     repIsCalculated=false;
-    dateIsCalculated=false;
+    date.calculateDate(id);
+    notes.resize(repNumber+1);
+    isModified=false;
 }
 
 //Page's method to calculate the future dates of repetitions
 void Page::calculateRepetitions(){
-    if(!dateIsCalculated) //it calculate the date of the page if it has not yet been calculated
-        date.calculateDate(id);
 
     //1: day rep
     if(date.getDayName()==6)
-        repetitions.push_back(id+2); //we don't repeat on sunday <(^-^)>
+        repetitions.push_back(id+2); //we don't repeat on sunday and saturaday <(^-^)>
+    else if(date.getDayName()==5)
+        repetitions.push_back(id+3);
     else
         repetitions.push_back(id+1);
 
@@ -40,12 +42,32 @@ void Page::calculateRepetitions(){
     repIsCalculated=true;
 }
 
+//setter method
+void Page::setIsModified(bool newState){isModified=newState;}
+
 //getter methods
 const std::vector<Note> &Page::getNotesConst()const{return notes;}
 std::vector<Note> &Page::getNotes(){return notes;}
+Note &Page::getNote(short index){
+    if(notes.size()<repNumber+1)
+        notes.resize(repNumber+1);
+    return notes[index];
+}
 unsigned short Page::getId()const{return id;}
 const std::vector<short> &Page::getRepetitions(){
     if(!repIsCalculated)
         calculateRepetitions();
     return repetitions;
+}
+const Date &Page::getDate()const{return date;}
+bool Page::getIsModified()const{return isModified;}
+Page &Page::operator=(const Page &other){
+    this->date=other.date;
+    this->notes=other.notes;
+    this->id=other.id;
+    this->repetitions=other.repetitions;
+    this->repIsCalculated=other.repIsCalculated;
+    this->isModified=other.isModified;
+
+    return *this;
 }

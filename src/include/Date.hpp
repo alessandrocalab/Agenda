@@ -3,6 +3,8 @@
 
 #include <string>
 
+bool isLeap(short year);//function to check if it is a leap year
+
 class Date{
 private:
     std::string formattedDate;

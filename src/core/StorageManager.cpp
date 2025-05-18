@@ -10,7 +10,7 @@ namespace fs=std::filesystem;
 //StorageManager methods:
 StorageManager::StorageManager(){};//Default constructor
 
-const std::string StorageManager::mainPath="data/pages/page_";//Path constant
+const std::string StorageManager::PAGES_PATH="data/pages/page_";//Path constant
 
 bool StorageManager::savePage(const Page &page)const{ //Method to save a page
 
@@ -33,11 +33,12 @@ bool StorageManager::savePage(const Page &page)const{ //Method to save a page
     for(const auto &note: toSave){//iterating all the single note
 
         std::vector<std::string> toAdd=note.getNotes();
-        if(toAdd.empty())
-                continue;
+        if(toAdd.empty()){
+            ++itNumber;
+            continue;
+            }
 
-        if(itNumber!=0)
-            file<<"~\n"; //delimeter between two different notes
+        file<<"~\n"; //delimeter between two different notes
 
         file<<std::to_string(itNumber)+"\n";//saving the itNumber to remember the type of note
 
@@ -69,26 +70,27 @@ bool StorageManager::loadPage(Page &page)const{ //Method to save a page
         notesToSet.resize(numberOfNotes);
         std::string line;
         short noteIndex;
-        bool newNote=true;
+        bool newNote=false;
         bool nextIsDate=false;
 
         //3. loading the page
         while(getline(file,line)){
 
-            if(newNote){//3.1. getting the index of the note to modify
+            if(line=="~"){ //3.1. checking if the end of note is reached
+                newNote=true;
+            }
+
+            else if(newNote){//3.2. getting the index of the note to modify
                 noteIndex=std::stoi(line);
                 newNote=false;
                 nextIsDate=true;
             }
 
-            else if(nextIsDate&&noteIndex!=0){ //3.2. checking if line is a date
+            else if(nextIsDate&&noteIndex!=0){ //3.3. checking if line is a date
                 notesToSet[noteIndex].setDate(line);
                 nextIsDate=false;
             }
 
-            else if(line=="~"){ //3.3. checking if the end of note is reached
-                newNote=true;
-            }
             else //3.4. adding the value to the note
                 notesToSet[noteIndex].addNote(line);
         }
@@ -101,7 +103,7 @@ bool StorageManager::loadPage(Page &page)const{ //Method to save a page
 
 fs::path StorageManager::pagePathCalculator(const Page &page)const{ //Method to calculate a page path
     short pageId=page.getId();
-    fs::path filePath=mainPath+(pageId>10000? "":(pageId>1000? "0":(pageId>100? "00":(pageId>10? "000":"0000"))))+(std::to_string(pageId))+".txt";
+    fs::path filePath=PAGES_PATH+(pageId>10000? "":(pageId>1000? "0":(pageId>100? "00":(pageId>10? "000":"0000"))))+(std::to_string(pageId))+".txt";
 
     return filePath;
 }
